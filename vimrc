@@ -1,112 +1,64 @@
-" ============================================================================
-" Vundle initialization
-" Avoid modify this section, unless you are very sure of what you are doing
-
-" no vi-compatible
-set nocompatible
-
-set hidden
-
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-endif
-
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
 " ============================================================================
 " Active plugins
 " You can disable or add new ones here:
 
-" Plugins from github repos:
-
 " Better file browser
-Bundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Code commenter
-Bundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 " Class/module browser
-Bundle 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " Extension to ctrlp, for fuzzy command finder
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
-" " Zen coding
-" Bundle 'mattn/emmet-vim'
+Plug 'fisadev/vim-ctrlp-cmdpalette'
 " Tab list panel
-Bundle 'kien/tabman.vim'
+Plug 'kien/tabman.vim'
 " Airline and themes
-Bundle 'bling/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Terminal Vim with 256 colors colorscheme
-Bundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
+Plug 'fisadev/FixedTaskList.vim'
 " Surround
-Bundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Autoclose
-Bundle 'Townk/vim-autoclose'
+Plug 'Townk/vim-autoclose'
 " Indent text object
-Bundle 'michaeljsmith/vim-indent-object'
+Plug 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
-Bundle 'klen/python-mode'
+" Plug 'klen/python-mode', { 'for': 'py' }
 " Better autocompletion
-Bundle 'Shougo/neocomplcache.vim'
+" Plug 'Shougo/neocomplcache.vim'
+" Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
+" autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
+Plug 'ervandew/supertab'
 " Git/mercurial/others diff icons on the side of the file lines
-Bundle 'mhinz/vim-signify'
-" Automatically sort python imports
-Bundle 'fisadev/vim-isort'
+Plug 'mhinz/vim-signify'
 " Drag visual blocks arround
-Bundle 'fisadev/dragvisuals.vim'
+Plug 'fisadev/dragvisuals.vim'
 " " Python and other languages code checker
-Bundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " Better whitespace highlighting for Vim
-Bundle 'ntpeters/vim-better-whitespace'
-
-" Plugins from vim-scripts repos:
-
-" " Search results counter
-" Bundle 'IndexedSearch'
-" " XML/HTML tags navigation
-" Bundle 'matchit.zip'
-" " Yank history navigation
-" Bundle 'YankRing.vim'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Golang Code
-Bundle 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
 " Ruy on Rails
-Bundle 'tpope/vim-rails'
-Bundle 'slim-template/vim-slim'
-Bundle 'digitaltoad/vim-jade'
-" Ruby endwise
-Bundle 'tpope/vim-endwise'
+Plug 'tpope/vim-rails', { 'for': 'rb' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'tpope/vim-endwise', { 'for': 'rb' }
 
 " C/C++ development
-Bundle 'vim-scripts/c.vim'
+Plug 'vim-scripts/c.vim', { 'for': 'cpp' }
 
-Bundle 'flazz/vim-colorschemes'
-
-" ============================================================================
-" Install plugins the first time vim runs
-
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
+" Add plugins to &runtimepath
+call plug#end()
 
 " ============================================================================
 " Plugins settings and mappings
@@ -205,23 +157,23 @@ nmap ,o :RopeFindOccurrences<CR>
 " NeoComplCache ------------------------------
 
 " most of them not documented because I'm not sure how they work
-" (docs aren't good, had to do a lot of trial and error to make 
+" (docs aren't good, had to do a lot of trial and error to make
 " it play nice)
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_fuzzy_completion = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_fuzzy_completion_start_length = 1
-let g:neocomplcache_auto_completion_start_length = 1
-let g:neocomplcache_manual_completion_start_length = 1
-let g:neocomplcache_min_keyword_length = 1
-let g:neocomplcache_min_syntax_length = 1
-" complete with workds from any opened file
-let g:neocomplcache_same_filetype_lists = {}
-let g:neocomplcache_same_filetype_lists._ = '_'
+" let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_ignore_case = 1
+" let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_enable_auto_select = 1
+" let g:neocomplcache_enable_fuzzy_completion = 1
+" let g:neocomplcache_enable_camel_case_completion = 1
+" let g:neocomplcache_enable_underbar_completion = 1
+" let g:neocomplcache_fuzzy_completion_start_length = 1
+" let g:neocomplcache_auto_completion_start_length = 1
+" let g:neocomplcache_manual_completion_start_length = 1
+" let g:neocomplcache_min_keyword_length = 1
+" let g:neocomplcache_min_syntax_length = 1
+" " complete with workds from any opened file
+" let g:neocomplcache_same_filetype_lists = {}
+" let g:neocomplcache_same_filetype_lists._ = '_'
 
 " TabMan ------------------------------
 
@@ -276,6 +228,9 @@ let g:airline_symbols.linenr = '⭡'
 " allow plugins by file type (required for plugins!)
 filetype plugin on
 filetype indent on
+
+set hidden
+filetype off
 
 " tabs and spaces handling
 set expandtab
@@ -406,7 +361,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Access the system clipboard from Vim
+" Acess the system clipboard from Vim
 set clipboard=unnamed
 
-" set guifont=Source\ Code\ Pro\ Light\ for\ PowerLine:h14
+set pastetoggle=<F2>
