@@ -29,13 +29,13 @@ Plug 'tpope/vim-surround'
 Plug 'Townk/vim-autoclose'
 " Indent text object
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'hynek/vim-python-pep8-indent'
+
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 " Plug 'klen/python-mode', { 'for': 'py' }
 " Better autocompletion
-" Plug 'Shougo/neocomplcache.vim'
-" Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
-" autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
+Plug 'Shougo/neocomplcache.vim'
 Plug 'ervandew/supertab'
 " Git/mercurial/others diff icons on the side of the file lines
 Plug 'mhinz/vim-signify'
@@ -55,7 +55,10 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'tpope/vim-endwise', { 'for': 'rb' }
 
 " C/C++ development
-Plug 'vim-scripts/c.vim', { 'for': 'cpp' }
+Plug 'vim-scripts/c.vim'
+
+" Clojure
+Plug 'tpope/vim-fireplace'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -83,7 +86,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " Tasklist ------------------------------
 
 " show pending tasks list
-map <F2> :TaskList<CR>
+" map <F2> :TaskList<CR>
 
 " CtrlP ------------------------------
 
@@ -159,27 +162,21 @@ nmap ,o :RopeFindOccurrences<CR>
 " most of them not documented because I'm not sure how they work
 " (docs aren't good, had to do a lot of trial and error to make
 " it play nice)
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_ignore_case = 1
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_enable_auto_select = 1
-" let g:neocomplcache_enable_fuzzy_completion = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_fuzzy_completion_start_length = 1
-" let g:neocomplcache_auto_completion_start_length = 1
-" let g:neocomplcache_manual_completion_start_length = 1
-" let g:neocomplcache_min_keyword_length = 1
-" let g:neocomplcache_min_syntax_length = 1
-" " complete with workds from any opened file
-" let g:neocomplcache_same_filetype_lists = {}
-" let g:neocomplcache_same_filetype_lists._ = '_'
-
-" TabMan ------------------------------
-
-" mappings to toggle display, and to focus on it
-let g:tabman_toggle = 'tl'
-let g:tabman_focus  = 'tf'
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_fuzzy_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_fuzzy_completion_start_length = 1
+let g:neocomplcache_auto_completion_start_length = 1
+let g:neocomplcache_manual_completion_start_length = 1
+let g:neocomplcache_min_keyword_length = 1
+let g:neocomplcache_min_syntax_length = 1
+" complete with workds from any opened file
+let g:neocomplcache_same_filetype_lists = {}
+let g:neocomplcache_same_filetype_lists._ = '_'
 
 " Autoclose ------------------------------
 
@@ -279,7 +276,7 @@ imap <M-Up> <ESC><c-w>k
 imap <M-Down> <ESC><c-w>j
 
 " old autocomplete keyboard shortcut
-imap <C-J> <C-X><C-O>
+" imap <C-J> <C-X><C-O>
 
 " Comment this line to enable autocompletion preview window
 " (displays documentation related to the selected completion option)
@@ -347,7 +344,7 @@ set mouse=a
 nmap <space> :
 
 "Map code completion to , + tab
-map <leader><tab> <C-x><C-o>
+" map <leader><tab> <C-x><C-o>
 
 "Map escape key to jj -- much faster
 imap jj <esc>
@@ -364,4 +361,4 @@ nnoremap <C-H> <C-W><C-H>
 " Acess the system clipboard from Vim
 set clipboard=unnamed
 
-set pastetoggle=<F2>
+let mapleader=","
