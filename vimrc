@@ -19,8 +19,6 @@ Plug 'kien/tabman.vim'
 " Airline and themes
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Terminal Vim with 256 colors colorscheme
-Plug 'altercation/vim-colors-solarized'
 " Pending tasks list
 Plug 'fisadev/FixedTaskList.vim'
 " Surround
@@ -38,7 +36,7 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'Shougo/neocomplcache.vim'
 Plug 'ervandew/supertab'
 " Git/mercurial/others diff icons on the side of the file lines
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 " Drag visual blocks arround
 Plug 'fisadev/dragvisuals.vim'
 " " Python and other languages code checker
@@ -46,19 +44,26 @@ Plug 'scrooloose/syntastic'
 " Better whitespace highlighting for Vim
 Plug 'ntpeters/vim-better-whitespace'
 
-" Golang Code
-" Plug 'fatih/vim-go'
-
 " Ruy on Rails
 Plug 'tpope/vim-rails', { 'for': 'rb' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'tpope/vim-endwise', { 'for': 'rb' }
 
 " C/C++ development
-Plug 'vim-scripts/c.vim'
+" Plug 'vim-scripts/c.vim'
 
 " Clojure
 Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
+
+" Elixir
+" Plug 'elixir-lang/vim-elixir'
+
+" Web development
+Plug 'mattn/emmet-vim'
+
+" Golang development
+Plug 'fatih/vim-go'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -297,10 +302,6 @@ nmap ,r :RecurGrepFast
 nmap ,wR :RecurGrep <cword><CR>
 nmap ,wr :RecurGrepFast <cword><CR>
 
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
-
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
 
@@ -362,3 +363,14 @@ nnoremap <C-H> <C-W><C-H>
 set clipboard=unnamed
 
 let mapleader=","
+let g:user_emmet_expandabbr_key='<Tab>'
+
+" Clojure S-expressions
+let g:paredit_mode = 1
+
+" ClojureScript
+autocmd BufRead,BufNewFile *.cljs setlocal filetype=clojure
+
+Plug 'chriskempson/base16-vim'
+
+colorscheme base16-eighties

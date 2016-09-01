@@ -43,28 +43,29 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 set -o vi
 
-
 # java
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # python
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT=/usr/local/var/pyenv
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # ruby
 eval "$(rbenv init -)"
 
 # golang
-# export GOPATH=$HOME/workspace/gocode
-# export PATH=$GOPATH/bin:$PATH
+export GOPATH=$HOME/workspace/gocode
+export PATH=$GOPATH/bin:$PATH
 
 # # projects
-# export PYTHONPATH="/Users/canhduong/workspace/lion_collector/lion_collector/lion_article_builder"
-# export PYTHONPATH="${PYTHONPATH}:/Users/canhduong/workspace/lion_collector/lion_collector/lion_article_builder/lab/lion_article_extractor"
-# export PYTHONPATH="${PYTHONPATH}:/Users/canhduong/workspace/lae"
+export PYTHONPATH="/Users/canhduong/workspace/lion_collector/lion_collector/lion_article_builder"
+export PYTHONPATH="${PYTHONPATH}:/Users/canhduong/workspace/lion_collector/lion_collector/lion_article_builder/lab/lion_article_extractor"
+export PYTHONPATH="${PYTHONPATH}:/Users/canhduong/workspace/lae"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH=$PATH:/usr/local/m-cli
+
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
