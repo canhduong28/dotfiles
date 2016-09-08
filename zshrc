@@ -1,41 +1,29 @@
-# load zgen
-source "${HOME}/.zgen/zgen.zsh"
+# load zplug
+source ~/.zplug/init.zsh
 
 source ~/.aliases
 
-# if the init scipt doesn't exist
-if ! zgen saved; then
-    echo "Creating a zgen save"
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/osx", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-history-substring-search"
+zplug "djui/alias-tips"
+zplug "sindresorhus/pure"
 
-    zgen oh-my-zsh
-
-    # plugins
-    zgen oh-my-zsh plugins/osx
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/command-not-found
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen oh-my-zsh plugins/cp
-    zgen oh-my-zsh plugins/extract
-    zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/web-search
-    zgen oh-my-zsh plugins/z
-    zgen oh-my-zsh plugins/common-aliases
-    zgen oh-my-zsh plugins/vi-mode
-
-    # completions
-    zgen load zsh-users/zsh-completions src
-    zgen load zsh-users/zsh-history-substring-search
-
-    zgen load djui/alias-tips
-
-    # theme
-    zgen load mafredri/zsh-async
-    zgen load sindresorhus/pure
-
-    # save all to init script
-    zgen save
+if ! zplug check; then
+    zplug install
 fi
+
+# source plugins and add commands to the PATH
+zplug load
+
+autoload -U promptinit; promptinit
+prompt pure
 
 # bin dk and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
@@ -65,7 +53,5 @@ export PYTHONPATH="${PYTHONPATH}:/Users/canhduong/workspace/lion_collector/lion_
 export PYTHONPATH="${PYTHONPATH}:/Users/canhduong/workspace/lae"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export PATH=$PATH:/usr/local/m-cli
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
