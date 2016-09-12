@@ -23,11 +23,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'fisadev/FixedTaskList.vim'
 " Surround
 Plug 'tpope/vim-surround'
-" Autoclose
-Plug 'Townk/vim-autoclose'
 " Indent text object
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'jiangmiao/auto-pairs'
 
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
@@ -55,6 +54,7 @@ Plug 'tpope/vim-endwise', { 'for': 'rb' }
 " Clojure
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
+Plug 'luochen1990/rainbow'
 
 " Elixir
 " Plug 'elixir-lang/vim-elixir'
@@ -64,6 +64,8 @@ Plug 'mattn/emmet-vim'
 
 " Golang development
 Plug 'fatih/vim-go'
+
+Plug 'chriskempson/base16-vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -366,11 +368,11 @@ let mapleader=","
 let g:user_emmet_expandabbr_key='<Tab>'
 
 " Clojure S-expressions
-let g:paredit_mode = 1
+" let g:paredit_mode = 1
 
 " ClojureScript
 autocmd BufRead,BufNewFile *.cljs setlocal filetype=clojure
 
-Plug 'chriskempson/base16-vim'
-
 colorscheme base16-eighties
+
+let g:rainbow_active = 1
